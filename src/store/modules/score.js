@@ -2,10 +2,10 @@ const CHECK_CORRECT = 'score/CHECK_CORRECT';
 const NEXT_PAGE = 'score/NEXT_PAGE';
 const RESET_QUIZS = 'score/RESET_QUIZS';
 
-export function checkCorrect({ quizIndex, answerIndex }) {
+export function checkCorrect({ isCorrect }) {
   return {
     type: CHECK_CORRECT,
-    payload: { quizIndex, answerIndex },
+    payload: { isCorrect },
   };
 }
 
@@ -27,7 +27,7 @@ const initialState = {
   quizs: [
     {
       quiz: '대한민국의 수도는?',
-      answer: [
+      options: [
         {
           text: '서울',
           isCorrect: true,
@@ -42,6 +42,23 @@ const initialState = {
         },
       ],
     },
+    {
+      quiz: '미국의 수도는?',
+      options: [
+        {
+          text: '샌프란시스코',
+          isCorrect: false,
+        },
+        {
+          text: '워싱턴 D.C',
+          isCorrect: true,
+        },
+        {
+          text: '뉴욕 시티',
+          isCorrect: false,
+        },
+      ],
+    },
   ],
 };
 
@@ -50,9 +67,7 @@ export default function score(state = initialState, action) {
     case CHECK_CORRECT:
       return {
         ...state,
-        score: state.quizs[action.payload.quizIndex].isCorrect
-          ? state.score + 10
-          : state.score,
+        score: action.payload.isCorrect ? state.score + 10 : state.score,
       };
     case NEXT_PAGE:
       return {
