@@ -1,9 +1,11 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { BlueButton } from './BlueButton';
-import { ProgressBar } from './ProgressBar';
 import { checkCorrect, nextPage } from './../store/modules/score';
+
 import styled from 'styled-components';
+
+import BlueButton from './BlueButton';
+import ProgressBar from './ProgressBar';
 
 const QuizTitle = styled.h1`
   margin: 50px 0;
@@ -14,7 +16,7 @@ const FlagImg = styled.img`
   margin-bottom: 50px;
 `;
 
-export function Quiz() {
+const Quiz = () => {
   const quizs = useSelector((state) => state.score.quizs);
   const page = useSelector((state) => state.score.page);
   const dispatch = useDispatch();
@@ -38,4 +40,6 @@ export function Quiz() {
       <ProgressBar page={page} maxPage={quizs.length} />
     </>
   );
-}
+};
+
+export default Quiz;

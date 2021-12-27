@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styled from 'styled-components';
 
 const Progress = styled.div`
@@ -22,7 +23,7 @@ const Fill = styled.span`
   background-color: #449ce2;
 `;
 
-export function ProgressBar({ page, maxPage }) {
+const ProgressBar = ({ page, maxPage }) => {
   return (
     <Progress>
       <div className="page">
@@ -33,4 +34,6 @@ export function ProgressBar({ page, maxPage }) {
       </Gauge>
     </Progress>
   );
-}
+};
+
+export default ProgressBar;

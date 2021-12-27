@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styled from 'styled-components';
 
 const MyButton = styled.a`
@@ -42,6 +43,8 @@ const MyButton = styled.a`
   }
 `;
 
-export function BlueButton({ text, clickEvent }) {
+const BlueButton = ({ text, clickEvent }) => {
   return <MyButton onClick={clickEvent}>{text}</MyButton>;
-}
+};
+
+export default BlueButton;

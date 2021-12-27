@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { PinkButton } from './components/PinkButton';
-import { Quiz } from './components/Quiz';
 import { nextPage, resetQuizs } from './store/modules/score';
+
 import styled from 'styled-components';
-import { Score } from './components/Score';
+
+import PinkButton from './components/PinkButton';
+import Quiz from './components/Quiz';
+import Score from './components/Score';
 
 const Main = styled.main`
   width: 100%;

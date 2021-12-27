@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styled from 'styled-components';
 
 const MyButton = styled.a`
@@ -43,6 +44,8 @@ const MyButton = styled.a`
   }
 `;
 
-export function PinkButton({ text, clickEvent }) {
+const PinkButton = ({ text, clickEvent }) => {
   return <MyButton onClick={clickEvent}>{text}</MyButton>;
-}
+};
+
+export default PinkButton;

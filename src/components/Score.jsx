@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+
 import styled from 'styled-components';
 
 const ScoreDiv = styled.div`
@@ -7,7 +8,7 @@ const ScoreDiv = styled.div`
   color: #e91e63;
 `;
 
-export function Score() {
+const Score = () => {
   const [score, setScore] = useState(0);
   const scoreRef = useRef(0);
   const obtainedScore = useSelector((state) => state.score.score);
@@ -20,8 +21,10 @@ export function Score() {
       if (scoreRef.current === obtainedScore) {
         clearInterval(scoreInterval);
       }
-    }, 30);
+    }, 20);
   }, []);
 
   return <ScoreDiv>{score}</ScoreDiv>;
-}
+};
+
+export default Score;
