@@ -35,6 +35,10 @@ const MyButton = styled.a`
   }
   &:hover {
     transform: translateY(0.25em);
+
+    &::before {
+      transform: translate3d(0, 0.4em, -1em);
+    }
   }
 `;
 

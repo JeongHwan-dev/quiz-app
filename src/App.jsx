@@ -2,13 +2,14 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { PinkButton } from './components/PinkButton';
 import { Quiz } from './components/Quiz';
-import { nextPage } from './store/modules/score';
+import { nextPage, resetQuizs } from './store/modules/score';
 import styled from 'styled-components';
 
 const Main = styled.main`
   width: 100%;
   max-width: 360px;
   margin: auto;
+  padding: 30px 0;
   text-align: center;
 `;
 
@@ -18,7 +19,7 @@ const MainImg = styled.img`
 `;
 
 const Header = styled.h1`
-  margin: 0 0 30px 0;
+  margin: 30px 0;
 `;
 
 const SubHeader = styled.h2`
@@ -28,19 +29,22 @@ const SubHeader = styled.h2`
   color: #6b6b6b;
 `;
 
+const Score = styled.div`
+  font-size: 4em;
+  color: #e91e63;
+`;
+
 function App() {
   const page = useSelector((state) => state.score.page);
   const quizs = useSelector((state) => state.score.quizs);
+  const score = useSelector((state) => state.score.score);
   const dispatch = useDispatch();
 
   return (
     <>
       {page === 0 && (
         <Main>
-          <MainImg
-            src="/images/city/new-york-city.jpg"
-            alt="뉴욕 시티(New York City)"
-          />
+          <MainImg src="/images/main-city.jpg" alt="뉴욕 시티(New York City)" />
           <Header>나라별 수도 퀴즈</Header>
           <SubHeader>진정한 수도 고인물도 100점을 맞기 어렵습니다.</SubHeader>
           <PinkButton
@@ -56,7 +60,19 @@ function App() {
           <Quiz />
         </Main>
       )}
-      {page > quizs.length && <Main>마지막 페이지</Main>}
+      {page > quizs.length && (
+        <Main>
+          <Header>당신의 수도 퀴즈 점수는</Header>
+          <Score>{score}점</Score>
+          <SubHeader></SubHeader>
+          <PinkButton
+            text="다시 테스트하기!"
+            clickEvent={() => {
+              dispatch(resetQuizs());
+            }}
+          />
+        </Main>
+      )}
     </>
   );
 }

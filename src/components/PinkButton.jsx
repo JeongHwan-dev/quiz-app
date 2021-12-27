@@ -36,6 +36,10 @@ const MyButton = styled.a`
   &:hover {
     background-color: #ffe9e9;
     transform: translateY(0.25em);
+
+    &::before {
+      transform: translate3d(0, 0.4em, -1em);
+    }
   }
 `;
 

@@ -26,7 +26,44 @@ const initialState = {
   page: 0,
   quizs: [
     {
+      quiz: '캐나다의 수도는?',
+      image: '/images/flags/canada-national-flag.jpg',
+      options: [
+        {
+          text: '오타와',
+          isCorrect: true,
+        },
+        {
+          text: '토론토',
+          isCorrect: false,
+        },
+        {
+          text: '밴쿠버',
+          isCorrect: false,
+        },
+      ],
+    },
+    {
+      quiz: '중국의 수도는?',
+      image: '/images//flags/china-national-flag.jpg',
+      options: [
+        {
+          text: '상하이',
+          isCorrect: false,
+        },
+        {
+          text: '베이징',
+          isCorrect: true,
+        },
+        {
+          text: '시안',
+          isCorrect: false,
+        },
+      ],
+    },
+    {
       quiz: '대한민국의 수도는?',
+      image: '/images//flags/south-korea-national-flag.jpg',
       options: [
         {
           text: '서울',
@@ -43,7 +80,26 @@ const initialState = {
       ],
     },
     {
+      quiz: '영국의 수도는?',
+      image: '/images//flags/uk-national-flag.jpg',
+      options: [
+        {
+          text: '맨체스터',
+          isCorrect: false,
+        },
+        {
+          text: '리버풀',
+          isCorrect: false,
+        },
+        {
+          text: '런던',
+          isCorrect: true,
+        },
+      ],
+    },
+    {
       quiz: '미국의 수도는?',
+      image: '/images//flags/usa-national-flag.jpg',
       options: [
         {
           text: '샌프란시스코',
@@ -76,7 +132,8 @@ export default function score(state = initialState, action) {
       };
     case RESET_QUIZS:
       return {
-        state: 0,
+        ...state,
+        score: 0,
         page: 0,
       };
     default:

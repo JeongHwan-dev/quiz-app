@@ -29,7 +29,7 @@ export function ProgressBar({ page, maxPage }) {
         {page} / {maxPage}
       </div>
       <Gauge>
-        <Fill width={`${(page / maxPage) * 100}%`}></Fill>
+        <Fill width={`${((page - 1) / maxPage) * 100}%`}></Fill>
       </Gauge>
     </Progress>
   );

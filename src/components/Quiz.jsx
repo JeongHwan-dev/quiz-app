@@ -9,6 +9,11 @@ const QuizTitle = styled.h1`
   margin: 50px 0;
 `;
 
+const FlagImg = styled.img`
+  width: inherit;
+  margin-bottom: 50px;
+`;
+
 export function Quiz() {
   const quizs = useSelector((state) => state.score.quizs);
   const page = useSelector((state) => state.score.page);
@@ -17,12 +22,14 @@ export function Quiz() {
   return (
     <>
       <QuizTitle>{quizs[page - 1].quiz}</QuizTitle>
+      {quizs[page - 1].image && (
+        <FlagImg src={quizs[page - 1].image} alt={quizs[page - 1].quiz} />
+      )}
       {quizs[page - 1].options.map((option) => (
         <BlueButton
           text={option.text}
           key={option.text}
           clickEvent={() => {
-            console.log(option.isCorrect);
             dispatch(checkCorrect({ isCorrect: option.isCorrect }));
             dispatch(nextPage());
           }}
