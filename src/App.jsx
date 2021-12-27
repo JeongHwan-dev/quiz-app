@@ -4,6 +4,7 @@ import { PinkButton } from './components/PinkButton';
 import { Quiz } from './components/Quiz';
 import { nextPage, resetQuizs } from './store/modules/score';
 import styled from 'styled-components';
+import { Score } from './components/Score';
 
 const Main = styled.main`
   width: 100%;
@@ -29,15 +30,9 @@ const SubHeader = styled.h2`
   color: #6b6b6b;
 `;
 
-const Score = styled.div`
-  font-size: 4em;
-  color: #e91e63;
-`;
-
 function App() {
   const page = useSelector((state) => state.score.page);
   const quizs = useSelector((state) => state.score.quizs);
-  const score = useSelector((state) => state.score.score);
   const dispatch = useDispatch();
 
   return (
@@ -46,7 +41,7 @@ function App() {
         <Main>
           <MainImg src="/images/main-city.jpg" alt="뉴욕 시티(New York City)" />
           <Header>나라별 수도 퀴즈</Header>
-          <SubHeader>진정한 수도 고인물도 100점을 맞기 어렵습니다.</SubHeader>
+          <SubHeader>총 5개의 수도 문제가 준비되어 있습니다.</SubHeader>
           <PinkButton
             text="테스트 시작"
             clickEvent={() => {
@@ -63,7 +58,7 @@ function App() {
       {page > quizs.length && (
         <Main>
           <Header>당신의 수도 퀴즈 점수는</Header>
-          <Score>{score}점</Score>
+          <Score />
           <SubHeader></SubHeader>
           <PinkButton
             text="다시 테스트하기!"
