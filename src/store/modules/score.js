@@ -123,7 +123,7 @@ export default function score(state = initialState, action) {
     case CHECK_CORRECT:
       return {
         ...state,
-        score: action.payload.isCorrect ? state.score + 10 : state.score,
+        score: action.payload.isCorrect ? state.score + 20 : state.score,
       };
     case NEXT_PAGE:
       return {
